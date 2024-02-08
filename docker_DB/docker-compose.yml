@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-cooking
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_USER: muhammed
+      MYSQL_PASSWORD: fürTestzweckeEinfachHalten
+      MYSQL_DATABASE: mydbs
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
